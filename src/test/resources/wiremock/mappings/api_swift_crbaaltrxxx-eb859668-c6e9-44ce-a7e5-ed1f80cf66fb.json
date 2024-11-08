@@ -1,0 +1,33 @@
+{
+  "id" : "eb859668-c6e9-44ce-a7e5-ed1f80cf66fb",
+  "name" : "api_swift_crbaaltrxxx",
+  "request" : {
+    "url" : "/api/swift/CRBAALTRXXX",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "body" : "[{\"bankOrInstitution\":\"ALPHA BANK ALBANIA\",\"city\":\"TIRANA\",\"branchName\":\"\",\"swiftCode\":\"CRBAALTRXXX\",\"bankCode\":\"CRBA\",\"countryCode\":\"AL\",\"locationCode\":\"TR\",\"branchCode\":\"XXX\",\"countryName\":\"Albania\"}]",
+    "headers" : {
+      "Server" : "RapidAPI-1.2.8",
+      "vary" : "User-Agent",
+      "X-RateLimit-Requests-Remaining" : "97",
+      "X-RateLimit-Requests-Reset" : "2577894",
+      "x-turbo-charged-by" : "LiteSpeed",
+      "X-RateLimit-Requests-Limit" : "100",
+      "X-RapidAPI-Region" : "AWS - eu-central-1",
+      "X-RapidAPI-Version" : "1.2.8",
+      "Date" : "Wed, 06 Nov 2024 18:29:54 GMT",
+      "X-RateLimit-rapid-free-plans-hard-limit-Remaining" : "499997",
+      "X-RapidAPI-Request-Id" : "52231372fed7da79647122aa38a61790124e8c77ef68d7a356fc144b8775475e",
+      "x-powered-by" : "Express",
+      "X-RateLimit-rapid-free-plans-hard-limit-Reset" : "2577894",
+      "etag" : "W/\"ca-Tj5tXfvzkjWFI66uTiv4A8zkU9c\"",
+      "X-RateLimit-rapid-free-plans-hard-limit-Limit" : "500000",
+      "Content-Type" : "application/json; charset=utf-8"
+    }
+  },
+  "uuid" : "eb859668-c6e9-44ce-a7e5-ed1f80cf66fb",
+  "persistent" : true,
+  "insertionIndex" : 2
+}
