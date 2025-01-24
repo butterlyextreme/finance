@@ -4,7 +4,6 @@ import com.learn.finance.model.producer.AddComment;
 import com.learn.finance.model.producer.Bank;
 import com.learn.finance.service.BankService;
 
-import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -21,7 +20,6 @@ import reactor.core.publisher.Mono;
 public class BankController {
 
     private final BankService bankService;
-    @Tag(name = "Plant", description = "the Plant Api")
     @RequestMapping(value = "/swift/{code}", method = RequestMethod.GET, produces = { "application/json" })
     public Mono<Bank> getGameById(@PathVariable final String code) {
         return bankService.getBank(code);
