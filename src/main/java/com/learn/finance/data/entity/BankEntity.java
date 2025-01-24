@@ -1,12 +1,13 @@
 package com.learn.finance.data.entity;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.GenericGenerator;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 
 
@@ -32,6 +33,14 @@ public class BankEntity {
     private String bankName;
     private String city;
     private String bic;
+
+    @OneToMany(mappedBy = "bank", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY, orphanRemoval = true)
+    @Fetch(value = FetchMode.JOIN)
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    @Builder.Default
+    @OrderBy("creation_time DESC")
+    private Set<CommentEntity> commentEntities = new HashSet<>();
 
 
 }

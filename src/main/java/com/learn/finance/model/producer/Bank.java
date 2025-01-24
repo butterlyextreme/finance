@@ -7,6 +7,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @Builder
 @AllArgsConstructor
@@ -18,4 +20,5 @@ public class Bank {
     String swiftCode;
     @JsonProperty("cached_on_system")
     boolean cached;
+    List<String> comments;
 }

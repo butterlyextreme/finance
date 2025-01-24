@@ -6,11 +6,13 @@ import com.learn.finance.config.DownStreamConfiguration;
 import com.learn.finance.config.DownStreamProperties;
 import com.learn.finance.data.entity.BankEntity;
 import com.learn.finance.data.repository.BankRepository;
+import com.learn.finance.data.repository.CommentRepository;
 import com.learn.finance.exception.DownStreamException;
 import com.learn.finance.model.consumer.BankDetails;
 import com.learn.finance.model.producer.Bank;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.platform.commons.util.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.jackson.JacksonAutoConfiguration;
 import org.springframework.boot.autoconfigure.web.reactive.function.client.WebClientAutoConfiguration;
@@ -22,11 +24,13 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
 
+import java.util.Collections;
 import java.util.List;
 
 import static com.learn.finance.utils.TestUtils.deserialize;
 import static com.learn.finance.utils.TestUtils.readMockJson;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.InstanceOfAssertFactories.COLLECTION;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.*;
@@ -34,7 +38,7 @@ import static org.springframework.http.HttpStatus.NOT_FOUND;
 
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(
-        classes = {BankServiceImpl.class, SWIFTClientImpl.class, BankRepository.class, DownStreamConfiguration.class, JacksonAutoConfiguration.class,
+        classes = {BankServiceImpl.class, SWIFTClientImpl.class, CommentRepository.class, BankRepository.class, DownStreamConfiguration.class, JacksonAutoConfiguration.class,
                 WebClientAutoConfiguration.class})
 @EnableConfigurationProperties({DownStreamProperties.class})
 @TestPropertySource("classpath:application-test.properties")
@@ -46,6 +50,9 @@ class BankServiceImplTest {
     SWIFTClient swiftClient;
     @MockBean
     BankRepository bankRepository;
+
+    @MockBean
+    CommentRepository commentRepository;
 
     @Autowired
     BankService bankService;
@@ -83,6 +90,7 @@ class BankServiceImplTest {
                 .city("TIRANA")
                 .swiftCode("CRBAALTRXXX")
                 .cached(true)
+                .comments(Collections.emptyList())
                 .build();
         BankEntity entity = BankEntity.builder().bankName("ALPHA BANK ALBANIA")
                 .city("TIRANA")
