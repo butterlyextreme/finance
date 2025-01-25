@@ -34,7 +34,6 @@ public class BankServiceImpl implements BankService {
         return Mono.just(bankRepository.findByBic(swiftCode))
                 .map(b -> addCommentEntity(b, comment))
                 .flatMap(commentEntity -> getCachedBank(swiftCode));
-
     }
 
     @Transactional
