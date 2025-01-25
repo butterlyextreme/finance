@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: whale
+  namespace: default
+data:
+  spring_env : 'prod'
